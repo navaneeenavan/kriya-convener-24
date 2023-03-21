@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import OtpInput from "react-otp-input";
-import { fetchParticipantDetails } from "../API/calls";
+import {
+  fetchApplyAttendanceIndividual,
+  fetchParticipantDetails,
+} from "../API/calls";
 import { toast } from "react-hot-toast";
 import KriyaInput from "../components/KriyaInput";
 import Row from "../components/Row";
@@ -32,6 +35,23 @@ const ApplyAttendance = () => {
     }
   };
 
+  const handleApply = () => {
+    toast.promise(
+      fetchApplyAttendanceIndividual({ kriyaId, eventId: "EVNT0004" }),
+      {
+        loading: "Loading...",
+        success: (data) => {
+          setKriyaId("");
+          return "Applied Successfully!";
+        },
+        error: (err) => {
+          console.log(err);
+          return `Error: ${err.response.data.message}`;
+        },
+      }
+    );
+  };
+
   return (
     <div className="h-full w-full overflow-y-auto font-poppins  pb-16 px-4">
       <h1 className="text-4xl font-semibold text-sky-900 mb-8">
@@ -45,6 +65,7 @@ const ApplyAttendance = () => {
             <Button
               disabled={userData ? !userData.isPaid : true}
               text={"Apply"}
+              handleClick={handleApply}
             />
             <Button
               handleClick={(e) => {
@@ -70,15 +91,21 @@ const ApplyAttendance = () => {
             )}
             <div className="flex items-center">
               <p className="font-semibold w-[10ch]">Name</p>
-              <p className="flex-1 [overflow-wrap:break-word] [inline-size:10ch]">{userData.name}</p>
+              <p className="flex-1 [overflow-wrap:break-word] [inline-size:10ch]">
+                {userData.name}
+              </p>
             </div>
             <div className="flex items-center">
               <p className="font-semibold w-[10ch]">Email</p>
-              <p className="flex-1 [overflow-wrap:break-word] [inline-size:10ch]">{userData.email}</p>
+              <p className="flex-1 [overflow-wrap:break-word] [inline-size:10ch]">
+                {userData.email}
+              </p>
             </div>
             <div className="flex items-center">
               <p className="font-semibold w-[10ch]">College</p>
-              <p className="flex-1 [overflow-wrap:break-word] [inline-size:10ch] lg:[inline-size:30ch]">{userData.college}</p>
+              <p className="flex-1 [overflow-wrap:break-word] [inline-size:10ch] lg:[inline-size:30ch]">
+                {userData.college}
+              </p>
             </div>
           </div>
         ) : (
