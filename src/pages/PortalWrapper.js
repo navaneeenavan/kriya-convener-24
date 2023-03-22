@@ -1,10 +1,20 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { FiUserCheck } from "react-icons/fi";
 import { BsListCheck } from "react-icons/bs";
 import { BiLogOutCircle } from "react-icons/bi";
+import { toast } from "react-hot-toast";
 
 const PortalWrapper = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token") || !localStorage.getItem("user")) {
+      window.location.href = "/login";
+    }
+    toast.success(`Welcome ${localStorage.getItem("user")}!`);
+  }, [location]);
+
   return (
     <div className="h-screen w-screen overflow-hidden bg-gray-100 font-poppins ">
       <header className="p-8 h-fit bg-gradient-to-r from-sky-400 to-sky-700 flex space-x-8 items-center px-8 lg:px-[calc(100vw/12)] relative z-40 shadow-xl">
@@ -42,12 +52,18 @@ const PortalWrapper = () => {
               Attendees
             </p>
           </Link>
-          <Link to="/logout" className="flex items-center space-x-4 group">
+          <button
+            onClick={() => {
+              localStorage.clear();
+              window.location.href = "/login";
+            }}
+            className="flex items-center space-x-4 group"
+          >
             <BiLogOutCircle className="text-xl text-sky-900 group-hover:opacity-70" />
             <p className="text-lg text-sky-900 group-hover:opacity-70">
               Logout
             </p>
-          </Link>
+          </button>
         </nav>
         <div className="flex-1  overflow-auto py-8 lg:p-0">
           <Outlet />
@@ -59,9 +75,14 @@ const PortalWrapper = () => {
           <Link to="/dashboard/list-attendance">
             <BsListCheck className="text-4xl text-gray-100" />
           </Link>
-          <Link to="/logout">
+          <button
+            onClick={() => {
+              localStorage.clear();
+              window.location.href = "/login";
+            }}
+          >
             <BiLogOutCircle className="text-4xl text-gray-100" />
-          </Link>
+          </button>
         </nav>
       </main>
     </div>

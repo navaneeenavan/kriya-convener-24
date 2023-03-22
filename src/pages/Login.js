@@ -19,6 +19,7 @@ const Login = () => {
       loading: "Logging in...",
       success: (data) => {
         localStorage.setItem("token", data.data.token);
+        localStorage.setItem("user", formData.eventId.toUpperCase());
         navigate("/dashboard");
         return "Logged in successfully!";
       },

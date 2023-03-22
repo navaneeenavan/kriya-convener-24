@@ -16,3 +16,6 @@ export const fetchParticipantDetails = (id) =>
 
 export const fetchApplyAttendanceIndividual = (formData) =>
   axios.post(`${REGISTER_URL}/attend/`, formData, {});
+
+export const fetchAttendees = (id) =>
+  axios.get(`${REGISTER_URL}/attendees/${id}`);

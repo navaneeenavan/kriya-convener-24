@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./styles/tailwind.output.css";
 import React from "react";
 import Login from "./pages/Login";
@@ -15,11 +15,15 @@ const App = () => {
         <Routes>
           <Route path="login" element={<Login />} />
           <Route path="dashboard" element={<PortalWrapper />}>
-            <Route index element={<h1>Dashboard</h1>} />
             <Route path="apply-attendance" element={<ApplyAttendance />} />
             <Route path="list-attendance" element={<ListAttendance />} />
-            <Route path="*" element={<h1>404</h1>} />
+            <Route
+              index
+              element={<Navigate to="/dashboard/apply-attendance" />}
+            />
+            <Route path="*" element={<Navigate to="/login" />} />
           </Route>
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

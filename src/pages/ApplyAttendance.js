@@ -37,7 +37,10 @@ const ApplyAttendance = () => {
 
   const handleApply = () => {
     toast.promise(
-      fetchApplyAttendanceIndividual({ kriyaId, eventId: "EVNT0004" }),
+      fetchApplyAttendanceIndividual({
+        kriyaId,
+        eventId: localStorage.getItem("user"),
+      }),
       {
         loading: "Loading...",
         success: (data) => {
