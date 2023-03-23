@@ -17,5 +17,8 @@ export const fetchParticipantDetails = (id) =>
 export const fetchApplyAttendanceIndividual = (formData) =>
   axios.post(`${REGISTER_URL}/attend/`, formData, {});
 
+export const fetchAttendanceFalse = (formData) =>
+  axios.post(`${REGISTER_URL}/attend-false`, formData, {});
+
 export const fetchAttendees = (id) =>
   axios.get(`${REGISTER_URL}/attendees/${id}`);

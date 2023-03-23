@@ -40,6 +40,7 @@ const Login = () => {
           <img
             src="/assets/Kriya_KLA_Logo_Final.png"
             className="h-20 opacity-50"
+            alt="Kriya KLA Logo"
           />
         </div>
         <TextInput
