@@ -5,6 +5,7 @@ import {
   fetchAttendees,
   fetchListAttendanceIndividual,
   fetchParticipantDetails,
+  fetchParticipantDetailsForevent
 } from "../API/calls";
 import { toast } from "react-hot-toast";
 import KriyaInput from "../components/KriyaInput";
@@ -16,7 +17,7 @@ const ListAttendance = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    toast.promise(fetchAttendees(localStorage.getItem("user")), {
+    toast.promise(fetchParticipantDetailsForevent(localStorage.getItem("user")), {
       loading: "Loading...",
       success: (data) => {
         console.log(data.data);

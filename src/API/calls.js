@@ -22,3 +22,6 @@ export const fetchAttendanceFalse = (formData) =>
 
 export const fetchAttendees = (id) =>
   axios.get(`${REGISTER_URL}/attendees/${id}`);
+
+export const fetchParticipantDetailsForevent = (id) =>
+  axios.get(`${BASE_URL}/register/users-from-event/${id}`, {});
