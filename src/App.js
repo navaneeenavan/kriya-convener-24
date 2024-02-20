@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import PortalWrapper from "./pages/PortalWrapper";
 import ApplyAttendance from "./pages/ApplyAttendance";
 import ListAttendance from "./pages/ListAttendance";
+import ListParticipants from "./pages/ListParticipants";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="dashboard" element={<PortalWrapper />}>
             <Route path="apply-attendance" element={<ApplyAttendance />} />
             <Route path="list-attendance" element={<ListAttendance />} />
+            <Route path="list-participants" element={<ListParticipants />} />
             <Route
               index
               element={<Navigate to="/dashboard/apply-attendance" />}

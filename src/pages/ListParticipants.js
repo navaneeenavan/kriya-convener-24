@@ -5,6 +5,7 @@ import {
   fetchAttendees,
   fetchListAttendanceIndividual,
   fetchParticipantDetails,
+  fetchParticipantDetailsForevent
 } from "../API/calls";
 import { toast } from "react-hot-toast";
 import KriyaInput from "../components/KriyaInput";
@@ -12,11 +13,11 @@ import Row from "../components/Row";
 import Button from "../components/Button";
 import { HiOutlineTrash } from "react-icons/hi";
 
-const ListAttendance = () => {
+const ListParticipants = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    toast.promise(fetchAttendees(localStorage.getItem("user")), {
+    toast.promise(fetchParticipantDetailsForevent(localStorage.getItem("user")), {
       loading: "Loading...",
       success: (data) => {
         console.log(data.data);
@@ -54,7 +55,7 @@ const ListAttendance = () => {
   return (
     <div className="h-full w-full overflow-hidden font-poppins  pb-16 px-4">
       <h1 className="text-4xl font-semibold text-sky-900 mb-8">
-        Attendees List
+        Participants List
       </h1>
       {!data ? (
         <h1 className="text-3xl font-semibold">Loading...</h1>
@@ -92,4 +93,4 @@ const ListAttendance = () => {
   );
 };
 
-export default ListAttendance;
+export default ListParticipants;

@@ -52,6 +52,15 @@ const PortalWrapper = () => {
               Attendees
             </p>
           </Link>
+          <Link
+            to="/dashboard/list-participants"
+            className="flex items-center space-x-4 group"
+          >
+            <BsListCheck className="text-xl text-sky-900 group-hover:opacity-70" />
+            <p className="text-lg text-sky-900 group-hover:opacity-70">
+              Participants
+            </p>
+          </Link>
           <button
             onClick={() => {
               localStorage.clear();
