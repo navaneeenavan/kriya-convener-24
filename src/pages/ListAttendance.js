@@ -69,9 +69,9 @@ const ListAttendance = () => {
           <div className="mt-2 gap-1 grid grid-cols-[1fr_1fr_0.5fr] lg:grid-cols-[0.5fr_1fr_1fr_1fr_0.5fr] max-h-[calc(100vh-20rem)] overflow-y-auto">
             {data.map((item) => (
               <React.Fragment>
-                <p className="h-fit ">{item.user[0].kriyaId}</p>
-                <p className="h-fit ">{item.user[0].name}</p>
-                <p className="h-fit hidden lg:block">{item.user[0].email}</p>
+                <p className="h-fit ">{item.kriyaId}</p>
+                <p className="h-fit ">{item.name}</p>
+                <p className="h-fit hidden lg:block">{item.email}</p>
                 <p className="h-fit hidden lg:block">
                   {new Date(item.attendedAt).toLocaleString()}
                 </p>
