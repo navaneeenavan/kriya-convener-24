@@ -27,7 +27,7 @@ const PortalWrapper = () => {
           <h1 className="text-xl lg:text-3xl font-semibold">
             Convenor's Portal
           </h1>
-          <h2 className="text-gray-800">Kriya 2023</h2>
+          <h2 className="text-gray-800">Kriya 2024</h2>
         </div>
       </header>
       <main className=" flex flex-col lg:flex-row lg:pt-8 h-[calc(100vh-7rem)] lg:h-[calc(100vh-12rem)] overflow-hidden lg:px-[calc(100vw/12)] lg:space-x-8">
