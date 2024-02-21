@@ -4,6 +4,7 @@ import { FiUserCheck } from "react-icons/fi";
 import { BsListCheck } from "react-icons/bs";
 import { BiLogOutCircle } from "react-icons/bi";
 import { toast } from "react-hot-toast";
+import { TbAward } from "react-icons/tb";
 
 const PortalWrapper = () => {
   const location = useLocation();
@@ -59,6 +60,15 @@ const PortalWrapper = () => {
             <BsListCheck className="text-xl text-sky-900 group-hover:opacity-70" />
             <p className="text-lg text-sky-900 group-hover:opacity-70">
               Participants
+            </p>
+          </Link>
+          <Link
+            to="/dashboard/result"
+            className="flex items-center space-x-4 group"
+          >
+            <TbAward className="text-xl text-sky-900 group-hover:opacity-70" />
+            <p className="text-lg text-sky-900 group-hover:opacity-70">
+              Results
             </p>
           </Link>
           <button
