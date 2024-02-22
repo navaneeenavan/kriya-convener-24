@@ -62,7 +62,7 @@ const PortalWrapper = () => {
               Participants
             </p>
           </Link>
-          <Link
+          {/* <Link
             to="/dashboard/result"
             className="flex items-center space-x-4 group"
           >
@@ -70,7 +70,7 @@ const PortalWrapper = () => {
             <p className="text-lg text-sky-900 group-hover:opacity-70">
               Results
             </p>
-          </Link>
+          </Link> */}
           <button
             onClick={() => {
               localStorage.clear();

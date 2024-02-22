@@ -20,7 +20,7 @@ const App = () => {
             <Route path="apply-attendance" element={<ApplyAttendance />} />
             <Route path="list-attendance" element={<ListAttendance />} />
             <Route path="list-participants" element={<ListParticipants />} />
-            <Route path="result" element={<ResultPage />} />
+            {/* <Route path="result" element={<ResultPage />} /> */}
             <Route
               index
               element={<Navigate to="/dashboard/apply-attendance" />}
