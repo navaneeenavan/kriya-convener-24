@@ -24,10 +24,10 @@ export const fetchAttendees = (id) =>
   axios.get(`${REGISTER_URL}/attendees/${id}`);
 
 export const fetchParticipantDetailsForevent = (id) =>
-  axios.get(`http://localhost:3000/users-from-event/${id}`, {});
+  axios.get(`https://connvener-backend.onrender.com/users-from-event/${id}`, {});
 
 export const fetchParticipantDetailsForWorkshop=(id)=>
-  axios.get(`http://localhost:3000/wsparticipants/${id}`, {});
+  axios.get(`https://connvener-backend.onrender.com/wsparticipants/${id}`, {});
 
   export const fetchParticipantDetailsForPaper=(id)=>
-  axios.get(`http://localhost:3000/ppparticipants/${id}`, {});
+  axios.get(`https://connvener-backend.onrender.com/ppparticipants/${id}`, {});
