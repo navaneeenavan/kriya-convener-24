@@ -63,22 +63,22 @@ const ListAttendance = () => {
           <div className="grid grid-cols-[1fr_1fr_0.5fr] lg:grid-cols-[0.5fr_1fr_1fr_1fr_0.5fr] h-[calc(100vh-)]">
             <h1 className="text-lg font-semibold">Kriya ID</h1>
             <h1 className="text-lg font-semibold">Name</h1>
-            <h1 className="hidden lg:block text-lg font-semibold">Email</h1>
-            <h1 className="hidden lg:block text-lg font-semibold">Time</h1>
+            <h1 className="hidden lg:block text-lg font-semibold">Mobile</h1>
+            <h1 className={"hidden lg:block text-lg font-semibold"+localStorage.getItem("user").charAt(0)==="P"?" text-white":" "}>Time</h1>
           </div>
           <div className="mt-2 gap-1 grid grid-cols-[1fr_1fr_0.5fr] lg:grid-cols-[0.5fr_1fr_1fr_1fr_0.5fr] max-h-[calc(100vh-20rem)] overflow-y-auto">
             {data.map((item) => (
               <React.Fragment>
                 <p className="h-fit ">{item.kriyaId}</p>
                 <p className="h-fit ">{item.name}</p>
-                <p className="h-fit hidden lg:block">{item.email}</p>
-                <p className="h-fit hidden lg:block">
+                <p className="h-fit hidden lg:block">{item.phone}</p>
+                <p className={"h-fit hidden lg:block"+localStorage.getItem("user").charAt(0)==="P"?" text-white":" "}>
                   {new Date(item.attendedAt).toLocaleString()}
                 </p>
                 <button
-                  className="hover:text-[#ff0000]"
+                  className="text-white"
                   onClick={() => {
-                    handleDelete(item.user[0].email);
+                    // handleDelete(item.user[0].email);
                   }}
                 >
                   <HiOutlineTrash />

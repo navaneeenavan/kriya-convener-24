@@ -35,6 +35,7 @@ const PortalWrapper = () => {
           <h1 className="text-lg text-sky-700 font-semibold opacity-50 pb-4">
             Menu
           </h1>
+          {localStorage.getItem("user").charAt(0)==="E"?<div>
           <Link
             to="/dashboard/apply-attendance"
             className="flex items-center space-x-4 group"
@@ -53,6 +54,9 @@ const PortalWrapper = () => {
               Attendees
             </p>
           </Link>
+          </div>:
+          <></>
+          }
           <Link
             to="/dashboard/list-participants"
             className="flex items-center space-x-4 group"

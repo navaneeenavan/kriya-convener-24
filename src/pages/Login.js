@@ -20,7 +20,15 @@ const Login = () => {
       success: (data) => {
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("user", formData.eventId.toUpperCase());
-        navigate("/dashboard");
+        console.log(localStorage.getItem("user"));
+        if(formData.eventId.toUpperCase().charAt(0)==="E")
+        {
+          navigate("/dashboard");
+        }
+        else
+        {
+          navigate("/dashboard/list-participants");
+        }
         return "Logged in successfully!";
       },
       error: (error) => {

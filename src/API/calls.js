@@ -3,7 +3,7 @@ import axios from "axios";
 export const BASE_URL = "https://kriyadb.psgtech.ac.in/api";
 
 export const AUTH_URL = `${BASE_URL}/convenor-auth`;
-export const REGISTER_URL = `${BASE_URL}/register`;
+export const REGISTER_URL = 'https://connvener-backend.onrender.com';
 
 export const fetchRegister = (formData) =>
   axios.post(`${AUTH_URL}/register`, formData, {});
@@ -24,4 +24,10 @@ export const fetchAttendees = (id) =>
   axios.get(`${REGISTER_URL}/attendees/${id}`);
 
 export const fetchParticipantDetailsForevent = (id) =>
-  axios.get(`${BASE_URL}/register/users-from-event/${id}`, {});
+  axios.get(`http://localhost:3000/users-from-event/${id}`, {});
+
+export const fetchParticipantDetailsForWorkshop=(id)=>
+  axios.get(`http://localhost:3000/wsparticipants/${id}`, {});
+
+  export const fetchParticipantDetailsForPaper=(id)=>
+  axios.get(`http://localhost:3000/ppparticipants/${id}`, {});
