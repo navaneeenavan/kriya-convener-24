@@ -3,6 +3,10 @@ import OtpInput from "react-otp-input";
 import {
   fetchAttendanceFalse,
   fetchAttendees,
+  fetchAttendeesPaper,
+  fetchAttendeesWorkshop,
+  fetchAttendanceFalsePaper,
+  fetchAttendanceFalseWorkshop,
   fetchListAttendanceIndividual,
   fetchParticipantDetails,
 } from "../API/calls";
@@ -16,22 +20,57 @@ const ListAttendance = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    toast.promise(fetchAttendees(localStorage.getItem("user")), {
-      loading: "Loading...",
-      success: (data) => {
-        console.log(data.data);
-        setData(data.data);
-        return "Success";
-      },
-      error: (err) => {
-        console.log(err);
-        return "Error";
-      },
-    });
+    if(localStorage.getItem("user").charAt(0)==="E")
+    {
+      toast.promise(fetchAttendees(localStorage.getItem("user")), {
+        loading: "Loading...",
+        success: (data) => {
+          console.log(data.data);
+          setData(data.data);
+          return "Success";
+        },
+        error: (err) => {
+          console.log(err);
+          return "Error";
+        },
+      });
+    }
+    else if(localStorage.getItem("user").charAt(0)==="P")
+    {
+      toast.promise(fetchAttendeesPaper(localStorage.getItem("user")), {
+        loading: "Loading...",
+        success: (data) => {
+          console.log(data.data);
+          setData(data.data);
+          return "Success";
+        },
+        error: (err) => {
+          console.log(err);
+          return "Error";
+        },
+      });
+    }
+    else
+    {
+      toast.promise(fetchAttendeesWorkshop(localStorage.getItem("user")), {
+        loading: "Loading...",
+        success: (data) => {
+          console.log(data.data);
+          setData(data.data);
+          return "Success";
+        },
+        error: (err) => {
+          console.log(err);
+          return "Error";
+        },
+      });
+    }
   }, []);
 
   const handleDelete = (email) => {
-    window.confirm("Are you sure you want to delete this attendee?") &&
+    if(localStorage.getItem("user").charAt(0)==="E")
+    {
+      window.confirm("Are you sure you want to delete this attendee?") &&
       toast.promise(
         fetchAttendanceFalse({
           email,
@@ -49,6 +88,48 @@ const ListAttendance = () => {
           },
         }
       );
+    }
+    else if(localStorage.getItem("user").charAt(0)==="P")
+    {
+      window.confirm("Are you sure you want to delete this attendee?") &&
+      toast.promise(
+        fetchAttendanceFalsePaper({
+          email,
+          eventId: localStorage.getItem("user"),
+        }),
+        {
+          loading: "Loading...",
+          success: (data) => {
+            window.location.reload();
+            return "Deleted Successfully!";
+          },
+          error: (err) => {
+            console.log(err);
+            return `Error: ${err.response.data.message}`;
+          },
+        }
+      );
+    }
+    else{
+      window.confirm("Are you sure you want to delete this attendee?") &&
+      toast.promise(
+        fetchAttendanceFalseWorkshop({
+          email,
+          eventId: localStorage.getItem("user"),
+        }),
+        {
+          loading: "Loading...",
+          success: (data) => {
+            window.location.reload();
+            return "Deleted Successfully!";
+          },
+          error: (err) => {
+            console.log(err);
+            return `Error: ${err.response.data.message}`;
+          },
+        }
+      );
+    }
   };
 
   return (

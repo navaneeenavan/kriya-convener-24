@@ -35,7 +35,6 @@ const PortalWrapper = () => {
           <h1 className="text-lg text-sky-700 font-semibold opacity-50 pb-4">
             Menu
           </h1>
-          {localStorage.getItem("user").charAt(0)==="E"?<div>
           <Link
             to="/dashboard/apply-attendance"
             className="flex items-center space-x-4 group"
@@ -54,9 +53,6 @@ const PortalWrapper = () => {
               Attendees
             </p>
           </Link>
-          </div>:
-          <></>
-          }
           <Link
             to="/dashboard/list-participants"
             className="flex items-center space-x-4 group"
@@ -92,16 +88,13 @@ const PortalWrapper = () => {
           <Outlet />
         </div>
         <nav className="h-20 bg-gray-800 w-full lg:hidden flex items-center justify-evenly">
-        {localStorage.getItem("user").charAt(0)==="E"?<div className="flex items-center justify-evenly space-x-10 w-auto">
+    
         <Link to="/dashboard/apply-attendance">
             <FiUserCheck className="text-4xl text-gray-100" />
           </Link>
           <Link to="/dashboard/list-attendance">
             <BsListCheck className="text-4xl text-gray-100" />
           </Link>
-          </div>:
-          <></>
-          }
           
           <button
             onClick={() => {

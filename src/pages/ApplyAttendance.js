@@ -3,6 +3,8 @@ import OtpInput from "react-otp-input";
 import {
   fetchApplyAttendanceIndividual,
   fetchParticipantDetails,
+  fetchApplyAttendanceIndividualWorkshop,
+  fetchApplyAttendanceIndividualPaper
 } from "../API/calls";
 import { toast } from "react-hot-toast";
 import KriyaInput from "../components/KriyaInput";
@@ -36,23 +38,65 @@ const ApplyAttendance = () => {
   };
 
   const handleApply = () => {
-    toast.promise(
-      fetchApplyAttendanceIndividual({
-        kriyaId,
-        eventId: localStorage.getItem("user"),
-      }),
-      {
-        loading: "Loading...",
-        success: (data) => {
-          setKriyaId("");
-          return "Applied Successfully!";
-        },
-        error: (err) => {
-          console.log(err);
-          return `Error: ${err.response.data.message}`;
-        },
-      }
-    );
+    if(localStorage.getItem("user").charAt(0)==="E")
+    {
+      toast.promise(
+        fetchApplyAttendanceIndividual({
+          kriyaId,
+          eventId: localStorage.getItem("user"),
+        }),
+        {
+          loading: "Loading...",
+          success: (data) => {
+            setKriyaId("");
+            return "Applied Successfully!";
+          },
+          error: (err) => {
+            console.log(err);
+            return `Error: ${err.response.data.message}`;
+          },
+        }
+      );
+    }
+    else if(localStorage.getItem("user").charAt(0)==="P")
+    {
+      toast.promise(
+        fetchApplyAttendanceIndividualPaper({
+          kriyaId,
+          eventId: localStorage.getItem("user"),
+        }),
+        {
+          loading: "Loading...",
+          success: (data) => {
+            setKriyaId("");
+            return "Applied Successfully!";
+          },
+          error: (err) => {
+            console.log(err);
+            return `Error: ${err.response.data.message}`;
+          },
+        }
+      );
+    }
+    else{
+      toast.promise(
+        fetchApplyAttendanceIndividualWorkshop({
+          kriyaId,
+          eventId: localStorage.getItem("user"),
+        }),
+        {
+          loading: "Loading...",
+          success: (data) => {
+            setKriyaId("");
+            return "Applied Successfully!";
+          },
+          error: (err) => {
+            console.log(err);
+            return `Error: ${err.response.data.message}`;
+          },
+        }
+      );
+    }
   };
 
   return (

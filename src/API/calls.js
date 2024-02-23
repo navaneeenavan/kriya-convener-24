@@ -20,8 +20,26 @@ export const fetchApplyAttendanceIndividual = (formData) =>
 export const fetchAttendanceFalse = (formData) =>
   axios.post(`${REGISTER_URL}/attend-false`, formData, {});
 
+  export const fetchApplyAttendanceIndividualWorkshop = (formData) =>
+  axios.post(`${REGISTER_URL}/attendws/`, formData, {});
+
+export const fetchAttendanceFalseWorkshop = (formData) =>
+  axios.post(`${REGISTER_URL}/attend-falsews`, formData, {});
+
+  export const fetchApplyAttendanceIndividualPaper = (formData) =>
+  axios.post(`${REGISTER_URL}/attendp/`, formData, {});
+
+export const fetchAttendanceFalsePaper = (formData) =>
+  axios.post(`${REGISTER_URL}/attend-falsep`, formData, {});
+
 export const fetchAttendees = (id) =>
   axios.get(`${REGISTER_URL}/attendees/${id}`);
+
+  export const fetchAttendeesWorkshop = (id) =>
+  axios.get(`${REGISTER_URL}/attendeesworkshop/${id}`);
+
+  export const fetchAttendeesPaper = (id) =>
+  axios.get(`${REGISTER_URL}/attendeespaper/${id}`);
 
 export const fetchParticipantDetailsForevent = (id) =>
   axios.get(`https://connvener-backend.onrender.com/users-from-event/${id}`, {});
