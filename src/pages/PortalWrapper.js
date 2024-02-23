@@ -92,7 +92,7 @@ const PortalWrapper = () => {
           <Outlet />
         </div>
         <nav className="h-20 bg-gray-800 w-full lg:hidden flex items-center justify-evenly">
-        {localStorage.getItem("user").charAt(0)==="E"?<div className="flex items-center justify-evenly w-2/3">
+        {localStorage.getItem("user").charAt(0)==="E"?<div className="flex items-center justify-evenly space-x-10 w-auto">
         <Link to="/dashboard/apply-attendance">
             <FiUserCheck className="text-4xl text-gray-100" />
           </Link>
