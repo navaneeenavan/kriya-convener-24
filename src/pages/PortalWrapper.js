@@ -92,12 +92,17 @@ const PortalWrapper = () => {
           <Outlet />
         </div>
         <nav className="h-20 bg-gray-800 w-full lg:hidden flex items-center justify-evenly">
-          <Link to="/dashboard/apply-attendance">
+        {localStorage.getItem("user").charAt(0)==="E"?<div>
+        <Link to="/dashboard/apply-attendance">
             <FiUserCheck className="text-4xl text-gray-100" />
           </Link>
           <Link to="/dashboard/list-attendance">
             <BsListCheck className="text-4xl text-gray-100" />
           </Link>
+          </div>:
+          <></>
+          }
+          
           <button
             onClick={() => {
               localStorage.clear();
